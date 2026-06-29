@@ -9,3 +9,8 @@ pub fn ask[A, M : Message](self: Address[A], msg: M) -> M::Result {
 ot implemented)
 }
 
+
+pub fn tell[A, M : Message](self: Address[A], msg: M) -> Unit {
+  // fire and forget
+}
+
