@@ -1,3 +1,5 @@
 target/
 .moon/
 *.wasm
+_build/
+.mooncakes/

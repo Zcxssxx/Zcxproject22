@@ -1,16 +1,16 @@
-pub struct Address[A] {
-  // channel to actor
+pub(all) struct Address[Msg] {
+  context: Context[Msg]
 }
 
-
-pub fn ask[A, M : Message](self: Address[A], msg: M) -> M::Result {
-  // wait for response
-  abort(
-ot implemented)
+pub fn[Msg] Address::new(context : Context[Msg]) -> Address[Msg] {
+  { context: context }
 }
 
-
-pub fn tell[A, M : Message](self: Address[A], msg: M) -> Unit {
-  // fire and forget
+pub fn[Msg] Address::tell(self: Address[Msg], msg: Msg) -> Unit {
+  self.context.send(msg)
 }
 
+pub fn[Msg, Res] Address::ask(self: Address[Msg], msg: Msg, handler: (Msg) -> Res) -> Res {
+  let _ = self
+  handler(msg)
+}
